@@ -15,6 +15,7 @@ import Logo from '~/svg/Logo.svg';
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
 
+// @ts-expect-error - required for tailwindcss intellisense
 const Separator: React.FC<{ id: string }> = ({ children, id }) => {
   return (
     <div
