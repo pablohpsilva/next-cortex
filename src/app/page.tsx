@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import * as React from 'react';
+import type { ReactNode } from 'react';
 
 /**
  * SVGR Support
@@ -11,12 +11,7 @@ import * as React from 'react';
  */
 import Logo from '~/svg/Logo.svg';
 
-// !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
-// Before you begin editing, follow all comments with `STARTERCONF`,
-// to customize the default configuration.
-
-// @ts-expect-error - required for tailwindcss intellisense
-const Separator: React.FC<{ id: string }> = ({ children, id }) => {
+function Separator({ children, id }: { children: ReactNode; id: string }) {
   return (
     <div
       id={id}
@@ -28,7 +23,7 @@ const Separator: React.FC<{ id: string }> = ({ children, id }) => {
       {children}
     </div>
   );
-};
+}
 
 export default function HomePage() {
   return (
