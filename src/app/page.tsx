@@ -11,11 +11,59 @@ import type { ReactNode } from 'react';
  */
 import Logo from '~/svg/Logo.svg';
 
+interface ImageData {
+  src: string;
+  alt: string;
+}
+
+function ImageWithText({ src, alt }: ImageData) {
+  return (
+    <div className='flex flex-col items-center justify-center'>
+      <Image src={src} alt={alt} width={64} height={64} />
+      <div>{alt}</div>
+    </div>
+  );
+}
+
+function ImageGrid({ images }: { images: ImageData[] }) {
+  return (
+    <div className='flex w-full flex-row items-center justify-center gap-12'>
+      {images.map((imageData, index) => (
+        <ImageWithText key={index} {...imageData} />
+      ))}
+    </div>
+  );
+}
+
 function Separator({ children, id }: { children: ReactNode; id: string }) {
   return (
     <div
       id={id}
-      className="relative flex items-center justify-center py-8 text-4xl text-white before:absolute before:bottom-6 before:left-0 before:right-0 before:h-[1px] before:w-full before:bg-white before:content-[''] after:absolute after:left-0 after:right-0 after:top-6 after:h-[1px] after:w-full after:bg-white after:content-['']"
+      className="
+        relative
+        flex
+        items-center
+        justify-center
+        py-8
+        text-4xl
+        text-white
+        before:absolute
+        before:bottom-6
+        before:left-0
+        before:right-0
+        before:h-[1px]
+        before:w-full
+        before:bg-white
+        before:content-['']
+        after:absolute
+        after:left-0
+        after:right-0
+        after:top-6
+        after:h-[1px]
+        after:w-full
+        after:bg-white
+        after:content-['']
+      "
       style={{
         background: `linear-gradient(86deg, #011936 0%, #590C6F 100%)`,
       }}
@@ -80,15 +128,75 @@ export default function HomePage() {
       <section className='bg-[#FDF8FF]'>
         <Separator id='#about'>About</Separator>
         <div className='relative mx-auto flex min-h-screen w-full max-w-[1440px] flex-col items-center justify-start pb-12 text-center'>
-          <div className="relative flex min-h-[700px] flex-row items-center justify-center gap-20 before:absolute before:left-[calc(50%-4px)] before:top-[98%] before:z-[2] before:h-[8px] before:w-[8px] before:rounded before:bg-blue-500 before:content-[''] after:absolute after:left-[calc(50%-1px)] after:top-0 after:z-[2] after:h-[98%] after:w-[2px] after:bg-blue-500 after:content-['']">
+          <div
+            className="
+            relative
+            flex
+            min-h-[700px]
+            flex-row
+            items-center
+            justify-center
+            gap-20
+            before:absolute
+            before:left-[calc(50%-4px)]
+            before:top-[98%]
+            before:z-[2]
+            before:h-[8px]
+            before:w-[8px]
+            before:rounded
+            before:bg-blue-500
+            before:content-['']
+            after:absolute
+            after:left-[calc(50%-1px)]
+            after:top-0
+            after:z-[2]
+            after:h-[98%]
+            after:w-[2px]
+            after:bg-blue-500
+            after:content-['']
+          "
+          >
             <div className='w-full'>
-              <div className="relative w-full py-4 before:absolute before:left-[30%] before:top-[calc(50%-4px)] before:z-[2] before:h-[8px] before:w-[8px] before:rounded before:bg-blue-500 before:content-[''] after:absolute after:left-0 after:top-[calc(50%-1px)] after:z-[2] after:h-[2px] after:w-[30%] after:bg-blue-500 after:content-['']">
-                out goal is simple
+              <div
+                className="
+                relative
+                w-full
+                py-4
+                before:absolute
+                before:left-[30%]
+                before:top-[calc(50%-4px)]
+                before:z-[2]
+                before:h-[8px]
+                before:w-[8px]
+                before:rounded
+                before:bg-blue-500
+                before:content-['']
+                after:absolute
+                after:left-0
+                after:top-[calc(50%-1px)]
+                after:z-[2]
+                after:h-[2px]
+                after:w-[30%]
+                after:bg-blue-500
+                after:content-['']
+              "
+              >
+                Our goal is simple
               </div>
               <div>to leverage technology to create a better future!</div>
             </div>
 
-            <div className="relative w-full pr-8 text-justify after:absolute after:w-[2px] after:content-['']">
+            <div
+              className="
+              relative
+              w-full
+              pr-8
+              text-justify
+              after:absolute
+              after:w-[2px]
+              after:content-['']
+            "
+            >
               We are an emergent cutting-edge company at the forefront of the
               digital revolution, specializing in Web3 and AI consultancy. We
               empower businesses to harness the limitless potential of emerging
@@ -105,17 +213,20 @@ export default function HomePage() {
           <div className='text-2xl font-bold'>We value to be</div>
 
           <div className='py-12'>
-            <div className='flex w-full flex-row items-center justify-center gap-12'>
-              <div>Enterpreneurial</div>
-              <div>Data Driven</div>
-              <div>Innovative</div>
-            </div>
-
-            <div className='flex w-full flex-row items-center justify-center gap-12'>
-              <div>Focused</div>
-              <div>Together</div>
-              <div>Grateful</div>
-            </div>
+            <ImageGrid
+              images={[
+                { src: '/images/entrepreneurial.png', alt: 'Entrepreneurial' },
+                { src: '/images/data-driven.png', alt: 'Data Driven' },
+                { src: '/images/innovative.png', alt: 'Innovative' },
+              ]}
+            />
+            <ImageGrid
+              images={[
+                { src: '/images/focused.png', alt: 'Focused' },
+                { src: '/images/together.png', alt: 'Together' },
+                { src: '/images/grateful.png', alt: 'Grateful' },
+              ]}
+            />
           </div>
         </div>
       </section>
