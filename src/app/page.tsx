@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 /**
@@ -9,7 +10,6 @@ import type { ReactNode } from 'react';
  * You can override the next-env if the type is important to you
  * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
  */
-import Logo from '~/svg/Logo.svg';
 
 interface ImageData {
   src: string;
@@ -18,16 +18,16 @@ interface ImageData {
 
 function ImageWithText({ src, alt }: ImageData) {
   return (
-    <div className='flex flex-col items-center justify-center'>
-      <Image src={src} alt={alt} width={64} height={64} />
-      <div>{alt}</div>
+    <div className='flex flex-col items-center justify-center gap-2 w-full md:w-[300px]'>
+      <div className='text-2xl font-light'>{alt}</div>
+      <Image src={src} alt={alt} width={92} height={92} />
     </div>
   );
 }
 
 function ImageGrid({ images }: { images: ImageData[] }) {
   return (
-    <div className='flex w-full flex-row items-center justify-center gap-12'>
+    <div className='flex w-full flex-col md:flex-row items-center justify-center gap-4 mb-12'>
       {images.map((imageData, index) => (
         <ImageWithText key={index} {...imageData} />
       ))}
@@ -35,26 +35,26 @@ function ImageGrid({ images }: { images: ImageData[] }) {
   );
 }
 
-function Separator({ children, id }: { children: ReactNode; id: string }) {
+function Separator({
+  children,
+  id,
+  className = '',
+}: {
+  children: ReactNode;
+  id: string;
+  className?: string;
+}) {
   return (
     <div
       id={id}
-      className="
-        relative
-        flex
-        items-center
-        justify-center
-        py-8
-        text-4xl
-        text-white
-        before:absolute
-        before:bottom-6
-        before:left-0
-        before:right-0
-        before:h-[1px]
-        before:w-full
-        before:bg-white
-        before:content-['']
+      className={`relative flex items-center justify-center py-8 text-4xl text-white w-full font-light ${className}`}
+      style={{
+        background: `linear-gradient(86deg, #011936 0%, #590C6F 100%)`,
+      }}
+    >
+      <hr
+        className="
+        after:content-['']
         after:absolute
         after:left-0
         after:right-0
@@ -62,13 +62,63 @@ function Separator({ children, id }: { children: ReactNode; id: string }) {
         after:h-[1px]
         after:w-full
         after:bg-white
-        after:content-['']
       "
-      style={{
-        background: `linear-gradient(86deg, #011936 0%, #590C6F 100%)`,
-      }}
-    >
+      />
+      <hr
+        className="
+        after:content-['']
+        after:absolute
+        after:left-0
+        after:right-0
+        after:top-3
+        after:h-[1px]
+        after:w-[50%]
+        after:bg-white
+        before:content-['']
+        before:absolute
+        before:left-[calc(50%-3px)]
+        before:top-[10px]
+        before:z-[2]
+        before:h-[6px]
+        before:w-[6px]
+        before:rounded
+        before:bg-white
+      "
+      />
       {children}
+      <hr
+        className="
+        after:content-['']
+        after:absolute
+        after:left-0
+        after:right-0
+        after:bottom-6
+        after:h-[1px]
+        after:w-full
+        after:bg-white
+      "
+      />
+      <hr
+        className="
+        after:content-['']
+        after:absolute
+        after:right-0
+        after:right-0
+        after:bottom-3
+        after:h-[1px]
+        after:w-[50%]
+        after:bg-white
+        before:content-['']
+        before:absolute
+        before:left-[calc(50%-3px)]
+        before:bottom-[10px]
+        before:z-[2]
+        before:h-[6px]
+        before:w-[6px]
+        before:rounded
+        before:bg-white
+      "
+      />
     </div>
   );
 }
@@ -95,29 +145,32 @@ export default function HomePage() {
         </div>
 
         <div className='flex items-center justify-between text-sm font-bold'>
-          <a href='#about'>About</a>
+          <Link href='/#about'>About</Link>
         </div>
 
-        <div className='flex items-center justify-between text-sm font-bold'>
-          <a href='#the-team'>The Team</a>
-        </div>
+        {/* <div className='flex items-center justify-between text-sm font-bold'>
+          <Link href='#the-team'>The Team</Link>
+        </div> */}
 
         <div className='flex items-center justify-between text-sm font-bold'>
-          <a href='#expertise'>Expertise</a>
+          <Link href='/#expertise'>Expertise</Link>
         </div>
       </nav>
 
       <section className='bg-[#FDF8FF] py-24'>
-        <div className='flex w-full justify-center text-3xl'>Welcome to</div>
-        <div className='mt-12 flex w-full justify-center text-9xl font-bold'>
+        <div className='flex w-full justify-center text-3xl text-[#590C6F]'>
+          Welcome to
+        </div>
+        <div className='mt-12 flex w-full justify-center text-9xl font-bold text-[#590C6F]'>
           Next corteX
         </div>
         <div className='flex flex-row items-center justify-center'>
           <Image
             src='/images/tree.jpeg'
-            alt='NextCortex logo'
+            alt='Tree'
             width={768}
             height={768}
+            className='rounded-full'
           />
         </div>
         <div className='flex w-full justify-center text-3xl'>
@@ -144,7 +197,7 @@ export default function HomePage() {
             before:h-[8px]
             before:w-[8px]
             before:rounded
-            before:bg-blue-500
+            before:bg-[#590C6F]
             before:content-['']
             after:absolute
             after:left-[calc(50%-1px)]
@@ -152,16 +205,19 @@ export default function HomePage() {
             after:z-[2]
             after:h-[98%]
             after:w-[2px]
-            after:bg-blue-500
+            after:bg-[#590C6F]
             after:content-['']
           "
           >
-            <div className='w-full'>
+            <div className='w-full flex justify-center flex-col items-center'>
               <div
                 className="
                 relative
                 w-full
                 py-4
+                text-[#590C6F]
+                text-2xl
+                font-bold
                 before:absolute
                 before:left-[30%]
                 before:top-[calc(50%-4px)]
@@ -169,7 +225,7 @@ export default function HomePage() {
                 before:h-[8px]
                 before:w-[8px]
                 before:rounded
-                before:bg-blue-500
+                before:bg-[#590C6F]
                 before:content-['']
                 after:absolute
                 after:left-0
@@ -177,13 +233,15 @@ export default function HomePage() {
                 after:z-[2]
                 after:h-[2px]
                 after:w-[30%]
-                after:bg-blue-500
+                after:bg-[#590C6F]
                 after:content-['']
               "
               >
                 Our goal is simple
               </div>
-              <div>to leverage technology to create a better future!</div>
+              <div className='text-3xl font-light text-[#011936] max-w-[500px] text-center'>
+                to leverage technology to create a better future!
+              </div>
             </div>
 
             <div
@@ -192,6 +250,8 @@ export default function HomePage() {
               w-full
               pr-8
               text-justify
+              text-2xl
+              font-normal
               after:absolute
               after:w-[2px]
               after:content-['']
@@ -210,7 +270,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className='text-2xl font-bold'>We value to be</div>
+          <div className='text-2xl font-bold text-[#590C6F]'>
+            We value to be
+          </div>
 
           <div className='py-12'>
             <ImageGrid
@@ -233,17 +295,90 @@ export default function HomePage() {
 
       <section className='bg-[#FDF8FF]'>
         <Separator id='#expertise'>Expertise</Separator>
-        <div className='relative mx-auto flex min-h-screen w-full max-w-[1440px] flex-col items-center justify-center py-12 text-center'>
-          <Logo className='w-16' />
-          <h1 className='mt-4'>Next.js + Tailwind CSS + TypeScript Starter</h1>
-          <p className='mt-2 text-sm text-gray-800'>
-            A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
-            Import, Seo, Link component, pre-configured with Husky{' '}
-          </p>
+        <div
+          className="
+            relative
+            flex
+            min-h-[700px]
+            flex-row
+            items-center
+            justify-center
+            gap-20
+            after:absolute
+            after:left-[calc(50%+2px)]
+            after:top-0
+            after:z-[2]
+            after:h-[98%]
+            after:w-[2px]
+            after:bg-[#590C6F]
+            after:content-['']
+            before:absolute
+            before:left-[calc(50%-2px)]
+            before:top-0
+            before:z-[2]
+            before:h-[98%]
+            before:w-[2px]
+            before:bg-[#590C6F]
+            before:content-['']
+            "
+        >
+          <div className='w-full flex justify-center flex-col text-center gap-20 items-center'>
+            <div className='text-center max-w-[450px]'>
+              <h3 className='mb-4 font-light text-3xl'>Smart Contract Audit</h3>
+              <p className='text-[#590C6F] text-2xl font-light'>
+                If you need to ensure the quality of your Smart contracts rely
+                on us to inspect them for you!
+              </p>
+            </div>
 
-          <footer className='absolute bottom-2 text-gray-700'>
-            © {new Date().getFullYear()} By Theodorus Clarence
-          </footer>
+            <div className='text-center max-w-[450px]'>
+              <h3 className='mb-4 font-light text-3xl'>
+                Taylor made projects, including Web3 and A.I. integration
+              </h3>
+              <p className='text-[#590C6F] text-2xl font-light'>
+                We dive deep into your business to understand it and propose the
+                highest value projects for your company!
+              </p>
+            </div>
+          </div>
+
+          <div className='w-full flex justify-center flex-col items-center'>
+            <h3 className='text-3xl font-light'>To know more</h3>
+            <Link href='#' className='w-full flex justify-center'>
+              <Separator className='max-w-[340px]' id='contact-us'>
+                Contact Us
+              </Separator>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className='bg-[#FDF8FF] flex justify-center'>
+        <div className='my-12 flex flex-row gap-8'>
+          <Link href='/'>
+            <Image
+              src='/images/twitter.png'
+              height={50}
+              width={50}
+              alt='twitter'
+            />
+          </Link>
+          <Link href='/'>
+            <Image
+              src='/images/telegram.png'
+              height={50}
+              width={50}
+              alt='telegram'
+            />
+          </Link>
+          <Link href='/'>
+            <Image
+              src='/images/instagram.png'
+              height={50}
+              width={50}
+              alt='instagram'
+            />
+          </Link>
         </div>
       </section>
     </main>
