@@ -159,7 +159,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      <section className='bg-[#FDF8FF] py-24 relative'>
+      <section className='bg-[#FDF8FF] py-24 relative overflow-hidden'>
         <div className='flex w-full justify-center text-3xl text-[#590C6F] font-light'>
           Welcome to
         </div>
@@ -255,7 +255,7 @@ export default function HomePage() {
           }}
           animate={{
             opacity: 0,
-            transform: 'translateY(110vw)',
+            transform: 'translateY(100vw)',
           }}
           transition={{ duration: 5, repeat: Infinity }}
           // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
@@ -287,7 +287,7 @@ export default function HomePage() {
         <motion.div
           initial={{
             opacity: 1,
-            transform: 'translateY(90vw)',
+            transform: 'translateY(100vw)',
           }}
           animate={{
             opacity: 0,
