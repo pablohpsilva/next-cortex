@@ -1,8 +1,9 @@
+'use client';
+// import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-
 /**
  * SVGR Support
  * Caveat: No React Props Type.
@@ -131,6 +132,7 @@ export default function HomePage() {
           NextCortex - leverage technology to create a better future!
         </title>
       </Head>
+
       <nav className='sticky top-0 z-10 flex h-20 flex-row justify-center gap-12 bg-white py-8'>
         <div className='mr-8 flex items-center justify-between gap-4 text-sm font-bold'>
           <Image
@@ -157,8 +159,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      <section className='bg-[#FDF8FF] py-24'>
-        <div className='flex w-full justify-center text-3xl text-[#590C6F]'>
+      <section className='bg-[#FDF8FF] py-24 relative'>
+        <div className='flex w-full justify-center text-3xl text-[#590C6F] font-light'>
           Welcome to
         </div>
         <div className='mt-12 flex w-full justify-center text-9xl font-bold text-[#590C6F]'>
@@ -173,9 +175,79 @@ export default function HomePage() {
             className='rounded-full'
           />
         </div>
-        <div className='flex w-full justify-center text-3xl'>
+        <div className='flex w-full justify-center text-3xl font-light'>
           here we create the future
         </div>
+
+        {/* <motion.div
+          initial={{
+            opacity: 1,
+            transform: 'translateX(0vw)',
+          }}
+          animate={{
+            opacity: 0,
+            transform: 'translateX(100vw)',
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+          // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
+          style={{ position: 'absolute', top: '10%', width: '100%' }}
+        >
+          <div
+            className="
+            relative
+            after:content-['']
+            after:absolute
+            after:bottom-3
+            after:h-[1px]
+            after:w-[50%]
+            after:bg-[#590C6F]
+            before:content-['']
+            before:absolute
+            before:left-[calc(50%-4px)]
+            before:bottom-[10px]
+            before:z-[2]
+            before:h-[6px]
+            before:w-[6px]
+            before:rounded
+            before:bg-[#590C6F]
+          "
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{
+            opacity: 1,
+            transform: 'translateX(0vw)',
+          }}
+          animate={{
+            opacity: 0,
+            transform: 'translateX(100vw)',
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+          // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
+          style={{ position: 'absolute', bottom: '10%', width: '100%' }}
+        >
+          <div
+            className="
+            relative
+            after:content-['']
+            after:absolute
+            after:bottom-3
+            after:h-[1px]
+            after:w-[50%]
+            after:bg-[#590C6F]
+            before:content-['']
+            before:absolute
+            before:right-0
+            before:bottom-[10px]
+            before:z-[2]
+            before:h-[6px]
+            before:w-[6px]
+            before:rounded
+            before:bg-[#590C6F]
+          "
+          />
+        </motion.div> */}
       </section>
 
       <section className='bg-[#FDF8FF]'>
