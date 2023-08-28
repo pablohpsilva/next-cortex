@@ -1,5 +1,5 @@
 'use client';
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -179,16 +179,16 @@ export default function HomePage() {
           here we create the future
         </div>
 
-        {/* <motion.div
+        <motion.div
           initial={{
             opacity: 1,
-            transform: 'translateX(0vw)',
+            transform: 'translateX(-50vw)',
           }}
           animate={{
             opacity: 0,
             transform: 'translateX(100vw)',
           }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 5, repeat: Infinity }}
           // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
           style={{ position: 'absolute', top: '10%', width: '100%' }}
         >
@@ -217,37 +217,107 @@ export default function HomePage() {
         <motion.div
           initial={{
             opacity: 1,
-            transform: 'translateX(0vw)',
+            transform: 'translateX(100vw)',
           }}
           animate={{
             opacity: 0,
-            transform: 'translateX(100vw)',
+            transform: 'translateX(-50vw)',
           }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 5, repeat: Infinity }}
           // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
           style={{ position: 'absolute', bottom: '10%', width: '100%' }}
         >
           <div
             className="
             relative
+          after:content-['']
+          after:absolute
+          after:bottom-3
+          after:h-[1px]
+          after:w-[50%]
+          after:bg-[#590C6F]
+          before:content-['']
+          before:absolute
+          before:bottom-[10px]
+          before:z-[2]
+          before:h-[6px]
+          before:w-[6px]
+          before:rounded
+          before:bg-[#590C6F]
+          "
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{
+            opacity: 1,
+            transform: 'translateY(-50vw)',
+          }}
+          animate={{
+            opacity: 0,
+            transform: 'translateY(110vw)',
+          }}
+          transition={{ duration: 5, repeat: Infinity }}
+          // transition={{ type: 'spring', stiffness: 100, repeat: Infinity }}
+          style={{ position: 'absolute', top: '10%', width: '100%' }}
+        >
+          <div
+            className="
+            relative
             after:content-['']
             after:absolute
-            after:bottom-3
-            after:h-[1px]
-            after:w-[50%]
+            after:top-0
+            after:h-[50vh]
+            after:w-[1px]
             after:bg-[#590C6F]
+            after:left-[10vw]
             before:content-['']
             before:absolute
-            before:right-0
-            before:bottom-[10px]
+            before:top-[50vh]
             before:z-[2]
             before:h-[6px]
             before:w-[6px]
+            before:left-[calc(10vw-2px)]
             before:rounded
             before:bg-[#590C6F]
-          "
+            "
           />
-        </motion.div> */}
+        </motion.div>
+
+        <motion.div
+          initial={{
+            opacity: 1,
+            transform: 'translateY(90vw)',
+          }}
+          animate={{
+            opacity: 0,
+            transform: 'translateY(-50vw)',
+          }}
+          transition={{ duration: 5, repeat: Infinity }}
+          style={{ position: 'absolute', top: 0, width: '100%' }}
+        >
+          <div
+            className="
+            relative
+            after:content-['']
+            after:absolute
+            after:top-0
+            after:h-[50vh]
+            after:w-[1px]
+            after:bg-[#590C6F]
+            after:right-[10vw]
+            before:content-['']
+            before:absolute
+            before:top-[0]
+            before:z-[2]
+            before:h-[6px]
+            before:w-[6px]
+            before:right-[calc(10vw-2px)]
+            before:rounded
+            before:bg-[#590C6F]
+            "
+          />
+        </motion.div>
       </section>
 
       <section className='bg-[#FDF8FF]'>
