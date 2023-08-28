@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Metadata } from 'next';
 import * as React from 'react';
 
@@ -60,6 +61,7 @@ export default function RootLayout({
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
+          // @ts-expect-error
           crossOrigin='true'
         />
         <link
