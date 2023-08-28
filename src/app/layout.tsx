@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Metadata } from 'next';
 import * as React from 'react';
